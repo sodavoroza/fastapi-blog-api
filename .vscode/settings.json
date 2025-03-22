@@ -1,0 +1,6 @@
+{
+    "python.defaultInterpreterPath": "/home/sodavoroza/.cache/pypoetry/virtualenvs/fastapi-blog-api-XKPlOahO-py3.12/bin/python",
+    "python.linting.enabled": true,
+    "python.linting.pylanceEnabled": true
+  }
+  
