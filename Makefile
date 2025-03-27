@@ -17,14 +17,13 @@ logs:
 	docker-compose logs -f web
 
 migrate:
-	docker-compose exec web alembic -c src/alembic.ini revision --autogenerate -m "$(m)"
+	docker-compose exec web alembic revision --autogenerate -m "$(m)"
 
 upgrade:
-	docker-compose exec web alembic -c src/alembic.ini upgrade head
+	docker-compose exec web alembic upgrade head
 
 migrate-internal:
 	alembic -c src/alembic.ini revision --autogenerate -m "$(m)"
 
 upgrade-internal:
 	alembic -c src/alembic.ini upgrade head
-
