@@ -84,7 +84,8 @@ jobs:
           psql -h localhost -U postgres -c "CREATE DATABASE blog_test;"
 
       - name: Run database migrations
-        run: alembic upgrade head -x "dbname=blog_test"
+        run: poetry run alembic upgrade head -x "dbname=blog_test"
+
 
       - name: Run pytest with coverage
         run: poetry run pytest --cov=src --cov-report=term-missing
