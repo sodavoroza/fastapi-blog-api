@@ -1,19 +1,20 @@
-from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
 from typing import List, Optional
+
+from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.db.session import get_async_session
 from src.api.dependencies.auth import get_current_user
+from src.api.schemas.article import ArticleCreate, ArticleRead, ArticleUpdate
 from src.db.models import User
+from src.db.session import get_async_session
 from src.services.article_service import (
     create_article,
-    list_articles,
-    update_article,
     fake_delete_article,
     get_article_by_id,
+    list_articles,
+    update_article,
 )
 from src.services.s3_service import upload_image_to_s3
-from src.api.schemas.article import ArticleCreate, ArticleUpdate, ArticleRead
 
 router = APIRouter(prefix="/articles", tags=["Articles"])
 

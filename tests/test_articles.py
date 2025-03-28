@@ -1,6 +1,8 @@
 import pytest
 from httpx import AsyncClient
+
 from src.main import app
+
 
 @pytest.mark.asyncio
 async def test_create_article(override_db_dependency):

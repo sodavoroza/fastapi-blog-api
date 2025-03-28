@@ -1,6 +1,8 @@
 import os
-import boto3
 from uuid import uuid4
+
+import boto3
+
 
 def upload_image_to_s3(file_data: bytes, filename: str) -> str:
     s3_endpoint = os.getenv("MINIO_ENDPOINT", "http://localhost:9000")
@@ -20,7 +22,7 @@ def upload_image_to_s3(file_data: bytes, filename: str) -> str:
         Bucket=s3_bucket,
         Key=unique_name,
         Body=file_data,
-        ContentType="image/jpeg", 
+        ContentType="image/jpeg",
     )
     image_url = f"{s3_endpoint}/{s3_bucket}/{unique_name}"
     return image_url

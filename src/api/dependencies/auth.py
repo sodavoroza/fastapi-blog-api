@@ -1,12 +1,12 @@
-from fastapi import Depends, Request, HTTPException
+from fastapi import Depends, HTTPException, Request
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from jose import jwt, JWTError
+from jose import JWTError, jwt
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
+from src.core.security import ALGORITHM, SECRET_KEY
 from src.db.models import User
 from src.db.session import get_async_session
-from src.core.security import SECRET_KEY, ALGORITHM
 
 http_bearer = HTTPBearer(auto_error=False)
 

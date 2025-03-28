@@ -7,6 +7,7 @@ from src.core.security import get_password_hash, verify_password
 from src.db.models import User
 from src.tasks.emails import send_welcome_email
 
+
 async def authenticate_user(
     email: str,
     password: str,

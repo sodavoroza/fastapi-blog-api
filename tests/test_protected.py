@@ -1,6 +1,8 @@
 import pytest
 from httpx import AsyncClient
+
 from src.main import app
+
 
 @pytest.mark.asyncio
 async def test_me_unauthorized(override_db_dependency):

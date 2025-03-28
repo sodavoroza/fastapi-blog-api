@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from sqlalchemy import Boolean, DateTime, ForeignKey, String, Text, func
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
@@ -58,7 +59,7 @@ class DeletedArticle(Base):
     title: Mapped[str] = mapped_column(String, nullable=False, index=True)
     content: Mapped[str] = mapped_column(Text, nullable=False)
     image_url: Mapped[str | None] = mapped_column(String, nullable=True)
-    category_id: Mapped[int | None] 
+    category_id: Mapped[int | None]
     deleted_at: Mapped[DateTime | None] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )

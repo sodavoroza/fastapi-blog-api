@@ -1,9 +1,12 @@
 from typing import List, Optional
-from sqlalchemy.ext.asyncio import AsyncSession
+
 from sqlalchemy import select, text
-from src.db.models import Article, DeletedArticle
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from src.api.schemas.article import ArticleCreate, ArticleUpdate
+from src.db.models import Article, DeletedArticle
 from src.tasks.emails import send_new_article_notification
+
 
 async def create_article(
     data: ArticleCreate,
@@ -78,7 +81,7 @@ async def fake_delete_article(
 ) -> bool:
     article = await get_article_by_id(article_id, session)
     if not article:
-        return False   
+        return False
 
     deleted_art = DeletedArticle(
         id=article.id,

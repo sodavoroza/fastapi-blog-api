@@ -1,12 +1,13 @@
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.ext.asyncio import AsyncSession
 from typing import List
 
-from src.db.session import get_async_session
-from src.api.schemas.category import CategoryCreate, CategoryRead
-from src.services.category_service import create_category, list_categories
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from src.api.dependencies.auth import get_current_user
+from src.api.schemas.category import CategoryCreate, CategoryRead
 from src.db.models import User
+from src.db.session import get_async_session
+from src.services.category_service import create_category, list_categories
 
 router = APIRouter(prefix="/categories", tags=["Categories"])
 

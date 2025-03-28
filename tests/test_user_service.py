@@ -1,9 +1,11 @@
 import pytest
+from fastapi import HTTPException
+
+from src.api.schemas.user import UserCreate
+from src.core.security import get_password_hash
 from src.db.models import User
 from src.services.user_service import authenticate_user, create_user
-from src.api.schemas.user import UserCreate
-from fastapi import HTTPException
-from src.core.security import get_password_hash
+
 
 @pytest.mark.asyncio
 async def test_authenticate_user_wrong_password(override_db_dependency, test_session):

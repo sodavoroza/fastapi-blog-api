@@ -1,9 +1,10 @@
-import pytest
 from uuid import uuid4
-from src.db.models import Article, Category
-from src.api.schemas.article import ArticleUpdate
-from src.services.article_service import update_article, list_articles, fake_delete_article
 
+import pytest
+
+from src.api.schemas.article import ArticleUpdate
+from src.db.models import Article, Category
+from src.services.article_service import fake_delete_article, list_articles, update_article
 
 
 @pytest.mark.asyncio

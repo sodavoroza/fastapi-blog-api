@@ -1,5 +1,7 @@
 import pytest
+
 from src.services.s3_service import upload_image_to_s3
+
 
 @pytest.mark.asyncio
 async def test_upload_image_to_s3(mocker):

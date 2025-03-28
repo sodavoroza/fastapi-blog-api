@@ -1,8 +1,11 @@
 from typing import List
-from sqlalchemy.ext.asyncio import AsyncSession
+
 from sqlalchemy import select
-from src.db.models import Category
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from src.api.schemas.category import CategoryCreate, CategoryRead
+from src.db.models import Category
+
 
 async def create_category(
     data: CategoryCreate,
