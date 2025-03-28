@@ -1,36 +1,28 @@
-# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Distribution / packaging
 build/
 dist/
 .eggs/
 *.egg-info/
 
-# Virtual environments
 .venv/
 env/
 venv/
 
-# Test and lint caches
 .pytest_cache/
 .mypy_cache/
 .pre-commit/
 .cache/
 
-# IDE / Editor directories
 .vscode/
 .idea/
 
-# OS files
 .DS_Store
 Thumbs.db
 
-# Environment files
 .env
 *.env
 
-# Poetry lock file (опционально, если хотите его игнорировать)
 poetry.lock

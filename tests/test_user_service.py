@@ -8,12 +8,10 @@ from src.core.security import get_password_hash
 @pytest.mark.asyncio
 async def test_authenticate_user_wrong_password(override_db_dependency, test_session):
     async with test_session as session:
-        # Генерируем корректный хеш для пароля "correctpass"
         valid_hash = get_password_hash("correctpass")
         user = User(email="found@example.com", hashed_password=valid_hash, is_active=True)
         session.add(user)
         await session.commit()
-        # Попытка аутентификации с неверным паролем должна вернуть None
         result = await authenticate_user("found@example.com", "wrongpass", session)
         assert result is None
 

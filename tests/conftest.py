@@ -24,7 +24,6 @@ def wait_for_db(host: str, port: int, timeout: int = 10) -> None:
             time.sleep(0.5)
     raise Exception(f"Database {host}:{port} is not available")
 
-# Подождем, пока БД станет доступна
 wait_for_db("db", 5432)
 
 @pytest.fixture(autouse=True)

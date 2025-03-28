@@ -5,7 +5,6 @@ from src.main import app
 @pytest.mark.asyncio
 async def test_create_article(override_db_dependency):
     async with AsyncClient(app=app, base_url="http://testserver") as ac:
-        # Регистрируем пользователя и логинимся
         await ac.post("/auth/register", json={"email": "article@example.com", "password": "pass123"})
         login_resp = await ac.post("/auth/login", json={"email": "article@example.com", "password": "pass123"})
         token = login_resp.json()["access_token"]

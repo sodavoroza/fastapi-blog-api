@@ -78,7 +78,7 @@ async def fake_delete_article(
 ) -> bool:
     article = await get_article_by_id(article_id, session)
     if not article:
-        return False  # Исправлено: возвращаем False вместо None
+        return False   
 
     deleted_art = DeletedArticle(
         id=article.id,

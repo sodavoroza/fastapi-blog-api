@@ -9,7 +9,6 @@ from src.services.article_service import update_article, list_articles, fake_del
 @pytest.mark.asyncio
 async def test_update_article_ok(override_db_dependency, test_session):
     async with test_session as session:
-        # Создаем две категории
         cat1 = Category(name="CatOne")
         cat2 = Category(name="CatTwo")
         session.add_all([cat1, cat2])
@@ -17,7 +16,6 @@ async def test_update_article_ok(override_db_dependency, test_session):
         await session.refresh(cat1)
         await session.refresh(cat2)
 
-        # Создаем статью в первой категории
         art = Article(title="OldTitle", content="OldContent", category_id=cat1.id)
         session.add(art)
         await session.commit()
