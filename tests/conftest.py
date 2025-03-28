@@ -56,6 +56,8 @@ def override_db_dependency():
 
 def wait_for_db(host: str, port: int, timeout: int = 10) -> None:
     import time
+
+    host = os.getenv("TEST_DATABASE_HOST", host)
     start = time.time()
     while time.time() - start < timeout:
         try:
@@ -64,6 +66,7 @@ def wait_for_db(host: str, port: int, timeout: int = 10) -> None:
         except socket.gaierror:
             time.sleep(0.5)
     raise Exception(f"Database {host}:{port} is not available")
+
     
 
 # Если требуется дождаться доступности БД перед тестами, можно вызвать wait_for_db() здесь.
