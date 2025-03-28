@@ -1,7 +1,7 @@
 import os
 import socket
 import time
-from typing import AsyncGenerator, Generator
+from collections.abc import AsyncGenerator, Generator
 
 import pytest
 from sqlalchemy import text
@@ -15,20 +15,21 @@ TEST_DATABASE_URL = os.getenv(
     "postgresql+asyncpg://postgres:password@localhost:5432/blog_test",
 )
 
-def wait_for_db(host: str, port: int, timeout: int = 30) -> None:
-    start_time = time.time()
+def wait_for_db(host: str, port: int, timeout: int = 60) -> None:
+    start = time.time()
     while True:
         try:
             socket.getaddrinfo(host, port)
-            return
+            break
         except socket.gaierror:
-            if time.time() - start_time > timeout:
+            if time.time() - start > timeout:
                 raise Exception(f"Database {host}:{port} is not available")
             time.sleep(1)
 
-wait_for_db("localhost", 5432)
+# Используем значение из POSTGRES_HOST (или localhost по умолчанию)
+wait_for_db(os.getenv("POSTGRES_HOST", "localhost"), 5432)
 
-@pytest.fixture(autouse=True)
+@pytest.fixture(scope="function", autouse=True)
 async def run_truncate_tables() -> None:
     engine = create_async_engine(TEST_DATABASE_URL, echo=False)
     async with engine.begin() as conn:
