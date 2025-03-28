@@ -61,29 +61,28 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-
       
     steps:
       - uses: actions/checkout@v4
-
+      
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
+      
       - uses: actions/cache@v4
         with:
           path: ~/.cache/pypoetry
           key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
-
+      
       - name: Install poetry
         run: pip install "poetry==1.5.1"
-
+      
       - name: Install dependencies
         run: poetry install
-
+      
       - name: Run alembic migrations
         run: poetry run alembic upgrade head
-
+      
       - name: Run pytest with coverage
         run: poetry run pytest --cov=src --cov-report=term-missing
