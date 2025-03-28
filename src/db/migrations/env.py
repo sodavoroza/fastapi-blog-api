@@ -22,7 +22,6 @@ def get_db_url() -> str:
     user = os.getenv("POSTGRES_USER")
     password = os.getenv("POSTGRES_PASSWORD")
     db = os.getenv("POSTGRES_DB")
-    # Используем TEST_DATABASE_HOST с дефолтом на "localhost"
     host = os.getenv("TEST_DATABASE_HOST", "localhost")
     return f"postgresql+asyncpg://{user}:{password}@{host}:5432/{db}"
 
