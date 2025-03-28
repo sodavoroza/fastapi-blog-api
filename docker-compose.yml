@@ -24,7 +24,6 @@ services:
       timeout: 5s
       retries: 5
 
-
   rabbitmq:
     image: rabbitmq:3-management
     ports:
@@ -45,6 +44,7 @@ services:
       - .env
     volumes:
       - ./:/app
+
   worker:
     build: .
     container_name: fastapi_worker
@@ -56,6 +56,6 @@ services:
       - .env
     volumes:
       - ./:/app
+
 volumes:
   postgres_data:
-
