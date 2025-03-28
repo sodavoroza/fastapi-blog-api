@@ -45,4 +45,8 @@ plugins = ["sqlalchemy.ext.mypy.plugin"]
 [tool.ruff]
 target-version = "py312"
 line-length = 120
-lint.ignore = ["D", "ANN", "INP", "FAST", "B008", "PT003", "RET504"]
+exclude = ["migrations", "__pycache__"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["W293", "W391", "E501"]
