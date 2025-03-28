@@ -1,5 +1,4 @@
 ```markdown
-![CI](https://github.com/sodavoroza/fastapi-blog-api/actions/workflows/ci.yml/badge.svg)
 
 # FastAPI Blog API
 
