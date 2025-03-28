@@ -79,6 +79,7 @@ jobs:
 
       - name: Create test database
         run: |
+          export PGPASSWORD=password
           psql -h localhost -U postgres -c "DROP DATABASE IF EXISTS blog_test;"
           psql -h localhost -U postgres -c "CREATE DATABASE blog_test;"
 
