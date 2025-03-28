@@ -1,17 +1,9 @@
-"""init_tables
-
-Revision ID: 98088e19dca4
-Revises: 
-Create Date: 2025-03-25 12:03:02.950123
-
-"""
 from typing import Sequence, Union
 
 from alembic import op
 import sqlalchemy as sa
 
 
-# revision identifiers, used by Alembic.
 revision: str = '98088e19dca4'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None

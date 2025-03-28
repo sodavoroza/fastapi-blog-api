@@ -16,7 +16,6 @@ def create_access_token(
     expires_delta: timedelta | None = None,
 ) -> str:
     to_encode = data.copy()
-    # Используем timezone-aware время вместо utcnow()
     expire = datetime.now(UTC) + (
         expires_delta or timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     )
