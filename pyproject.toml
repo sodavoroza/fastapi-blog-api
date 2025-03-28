@@ -44,5 +44,5 @@ plugins = ["sqlalchemy.ext.mypy.plugin"]
 
 [tool.ruff]
 target-version = "py312"
-line-length = 88
+line-length = 120
 lint.ignore = ["D", "ANN", "INP", "FAST", "B008", "PT003", "RET504"]
