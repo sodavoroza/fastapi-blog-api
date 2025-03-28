@@ -56,7 +56,12 @@ jobs:
           POSTGRES_DB: blog_test
         ports:
           - 5432:5432
-        options: "--health-cmd 'pg_isready -U postgres -d blog_test' --health-interval 10s --health-timeout 5s --health-retries 5"
+        options: >-
+          --health-cmd "pg_isready --username=postgres --dbname=blog_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
       
     steps:
       - uses: actions/checkout@v4
